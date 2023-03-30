@@ -43,4 +43,9 @@ jobs:
             set -e
             az config set bicep.use_binary_from_path=false
             az bicep install
-            az deployment group create --name ${{ steps.set-vars.outputs.DEPLOYMENT_NAME }} --resource-group ${{ steps.set-vars.outputs.RESOURCE_GROUP_NAME }} --template-file ./src/arm/main.bicep --parameters location=${{ env.LOCATION }} --query properties.outputs.result.value -o json | jq -r . > ./src/arm/outputs.json
+            if [ $(az deployment group create --name ${{ steps.set-vars.outputs.DEPLOYMENT_NAME }} --resource-group ${{ steps.set-vars.outputs.RESOURCE_GROUP_NAME }} --template-file ./src/arm/main.bicep --parameters location=${{ env.LOCATION }} --query properties.outputs.result.value -o json | jq -r . > ./src/arm/outputs.json) = true ]; then 
+              echo !!!
+            else
+              echo "Game over!"
+              exit 1
+            fi
