@@ -12,6 +12,10 @@ DEPLOYMENT_NAME=$2
 LOCATION=$3
 WORKSPACE=$4
 
+# workaround to get bicep to work with azure cli github action
+az config set bicep.use_binary_from_path=false
+az bicep install
+
 RESULT=$(az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $DEPLOYMENT_NAME \
