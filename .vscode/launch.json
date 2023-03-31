@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Bash simple",
             "cwd": "${workspaceFolder}/src/arm/",
-            "args": ["rg-aca-shared-001", "7b7e1b47-350b-4953-b185-5960464b9058", "aca-shared-001"],
+            "args": ["rg-aca-shared-001", "7b7e1b47-350b-4953-b185-5960464b9058", "aca-shared-001", "."],
             "program": "deploy.sh",
             "terminalKind": "integrated"
           }
