@@ -22,7 +22,7 @@ param adminPassword string
 //////////////////////
 
 // product name
-var product = 'sca'
+var product = 'ca'
 
 // network
 var vnetName = 'vnet-${product}-${environment}-001'
