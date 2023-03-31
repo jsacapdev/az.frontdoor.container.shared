@@ -40,12 +40,5 @@ jobs:
         uses: Azure/cli@v1
         with:
           inlineScript: |
-            set -e
-            az config set bicep.use_binary_from_path=false
-            az bicep install
-            if [$(az deployment group create --name ${{ steps.set-vars.outputs.DEPLOYMENT_NAME }} --resource-group ${{ steps.set-vars.outputs.RESOURCE_GROUP_NAME }} --template-file ./src/arm/main.bicep --parameters location=${{ env.LOCATION }} --query properties.outputs.result.value -o json | jq -r . > ./src/arm/outputs.json) = true ]; then 
-              echo !!!
-            else
-              echo "Game over!"
-              exit 1
-            fi
+            chmod +x $GITHUB_WORKSPACE/src/arm/deploy.sh 
+            $GITHUB_WORKSPACE/src/arm/deploy.sh ${{ steps.set-vars.outputs.RESOURCE_GROUP_NAME }} ${{ steps.set-vars.outputs.DEPLOYMENT_NAME }} ${{ env.LOCATION }}

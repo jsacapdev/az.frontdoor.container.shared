@@ -1,0 +1,17 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "bashdb",
+            "request": "launch",
+            "name": "Bash simple",
+            "cwd": "${workspaceFolder}/src/arm/",
+            "args": ["rg-aca-shared-001", "7b7e1b47-350b-4953-b185-5960464b9058", "aca-shared-001"],
+            "program": "deploy.sh",
+            "terminalKind": "integrated"
+          }
+    ]
+}
