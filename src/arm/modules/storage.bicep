@@ -7,7 +7,7 @@ param vmStorageAccountName string
 resource vmStg 'Microsoft.Storage/storageAccounts@2022-05-01' = {
   name: vmStorageAccountName
   location: location
-  kind: 'balls'
+  kind: 'StorageV2'
   sku: {
     name: 'Standard_LRS'
   }
