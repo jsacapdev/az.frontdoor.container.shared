@@ -58,34 +58,6 @@ module stg './modules/storage.bicep' = {
 //   }
 // }
 
-// module keyvault './keyvault.bicep' = {
-//   name: 'keyvault'
-//   dependsOn: [
-//     network
-//   ]
-//   params: {
-//     keyVaultName: keyVaultName
-//     location: location
-//     vnetName: vnetName
-//     kvSubnetName: kvSubnetName
-//   }
-// }
-
-// module kvnetwork './keyvault.network.bicep' = {
-//   name: 'kvnetwork'
-//   dependsOn: [
-//     keyvault
-//     network
-//   ]
-//   params: {
-//     location: location
-//     keyVaultName: keyVaultName
-//     vnetName: vnetName
-//     peSubnetName: kvSubnetName
-//     kvPrivateDnsZoneNameNameId: dns.outputs.kvPrivateDnsZoneNameNameId
-//   }
-// }
-
 // module dns './dns.bicep' = {
 //   name: 'dns'
 //   dependsOn: [

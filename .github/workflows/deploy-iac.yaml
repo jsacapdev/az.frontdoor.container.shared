@@ -41,4 +41,4 @@ jobs:
         with:
           inlineScript: |
             chmod +x $GITHUB_WORKSPACE/src/arm/deploy.sh 
-            $GITHUB_WORKSPACE/src/arm/deploy.sh ${{ steps.set-vars.outputs.RESOURCE_GROUP_NAME }} ${{ steps.set-vars.outputs.DEPLOYMENT_NAME }} ${{ env.LOCATION }} $GITHUB_WORKSPACE/src/arm/
+            $GITHUB_WORKSPACE/src/arm/deploy.sh ${{ steps.set-vars.outputs.RESOURCE_GROUP_NAME }} ${{ steps.set-vars.outputs.DEPLOYMENT_NAME }} ${{ env.LOCATION }} $GITHUB_WORKSPACE/src/arm/ ${{ secrets.ADMIN_USERNAME }} ${{ secrets.ADMIN_PASSWORD }}

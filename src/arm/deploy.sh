@@ -6,6 +6,8 @@ echo "Resource Group -> $1";
 echo "Deployment Name -> $2";
 echo "Location -> $3";
 echo "Workspace -> $4";
+echo "Username -> $5";
+echo "Password -> $6";
 
 RESOURCE_GROUP_NAME=$1
 DEPLOYMENT_NAME=$2
