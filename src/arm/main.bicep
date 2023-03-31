@@ -37,7 +37,7 @@ var nicName = 'nic-${product}-${environment}-001'
 var vmName = 'vm${product}${environment}001'
 var keyVaultName = 'kv-${product}-${environment}-001'
 
-module stg './storage.bicep' = {
+module stg './modules/storage.bicep' = {
   name: 'storageDeploy'
   params: {
     location: location
@@ -45,56 +45,56 @@ module stg './storage.bicep' = {
   }
 }
 
-module network './network.bicep' = {
-  name: 'network'
-  params: {
-    location: location
-    vnetName: vnetName
-    vmSubnetName: vmSubnetName
-    kvSubnetName: kvSubnetName
-    publicIpName: publicIpName
-    nsgName: nsgName
-    nicName: nicName
-  }
-}
+// module network './network.bicep' = {
+//   name: 'network'
+//   params: {
+//     location: location
+//     vnetName: vnetName
+//     vmSubnetName: vmSubnetName
+//     kvSubnetName: kvSubnetName
+//     publicIpName: publicIpName
+//     nsgName: nsgName
+//     nicName: nicName
+//   }
+// }
 
-module keyvault './keyvault.bicep' = {
-  name: 'keyvault'
-  dependsOn: [
-    network
-  ]
-  params: {
-    keyVaultName: keyVaultName
-    location: location
-    vnetName: vnetName
-    kvSubnetName: kvSubnetName
-  }
-}
+// module keyvault './keyvault.bicep' = {
+//   name: 'keyvault'
+//   dependsOn: [
+//     network
+//   ]
+//   params: {
+//     keyVaultName: keyVaultName
+//     location: location
+//     vnetName: vnetName
+//     kvSubnetName: kvSubnetName
+//   }
+// }
 
-module kvnetwork './keyvault.network.bicep' = {
-  name: 'kvnetwork'
-  dependsOn: [
-    keyvault
-    network
-  ]
-  params: {
-    location: location
-    keyVaultName: keyVaultName
-    vnetName: vnetName
-    peSubnetName: kvSubnetName
-    kvPrivateDnsZoneNameNameId: dns.outputs.kvPrivateDnsZoneNameNameId
-  }
-}
+// module kvnetwork './keyvault.network.bicep' = {
+//   name: 'kvnetwork'
+//   dependsOn: [
+//     keyvault
+//     network
+//   ]
+//   params: {
+//     location: location
+//     keyVaultName: keyVaultName
+//     vnetName: vnetName
+//     peSubnetName: kvSubnetName
+//     kvPrivateDnsZoneNameNameId: dns.outputs.kvPrivateDnsZoneNameNameId
+//   }
+// }
 
-module dns './dns.bicep' = {
-  name: 'dns'
-  dependsOn: [
-    network
-  ]
-  params: {
-    vnetName: vnetName
-  }
-}
+// module dns './dns.bicep' = {
+//   name: 'dns'
+//   dependsOn: [
+//     network
+//   ]
+//   params: {
+//     vnetName: vnetName
+//   }
+// }
 
 // module vm './vm.bicep' = {
 //   name: 'vmDeploy'

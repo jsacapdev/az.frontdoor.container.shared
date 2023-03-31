@@ -9,13 +9,13 @@ RESOURCE_GROUP_NAME=$1
 DEPLOYMENT_NAME=$2
 LOCATION=$3
 
-# RESULT=$(az deployment group create \
-#     --resource-group $RESOURCE_GROUP_NAME \
-#     --name $DEPLOYMENT_NAME \
-#     --template-file ./main.bicep \
-#     --parameters baseName=$BASE_NAME \
-#     --query properties.outputs.result)
+RESULT=$(az deployment group create \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --name $DEPLOYMENT_NAME \
+    --template-file ./main.bicep \
+    --parameters location=$LOCATION \
+    --query properties.outputs.result)
 
-exit 1
+# exit 1
 
 echo Finshed.
