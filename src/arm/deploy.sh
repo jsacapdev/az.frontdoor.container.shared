@@ -16,4 +16,6 @@ LOCATION=$3
 #     --parameters baseName=$BASE_NAME \
 #     --query properties.outputs.result)
 
+exit 1
+
 echo Finshed.
