@@ -13,10 +13,12 @@ LOCATION=$3
 az config set bicep.use_binary_from_path=false
 az bicep install
 
+ls -al
+
 RESULT=$(az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $DEPLOYMENT_NAME \
-    --template-file ./main.bicep \
+    --template-file main.bicep \
     --parameters location=$LOCATION \
     --query properties.outputs.result)
 
