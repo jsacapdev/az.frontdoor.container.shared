@@ -61,28 +61,17 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-05-01' = {
   properties: {
     addressSpace: {
       addressPrefixes: [
-        '10.0.1.0/24'
+        '10.1.0.0/16'
       ]
     }
     subnets: [
       {
         name: vmSubnetName
         properties: {
-          addressPrefix: '10.0.1.0/26'
+          addressPrefix: '10.1.0.0/26'
           networkSecurityGroup: {
             id: securityGroup.id
           }
-        }
-      }
-      {
-        name: kvSubnetName
-        properties: {
-          addressPrefix: '10.0.1.64/26'
-          serviceEndpoints: [
-            {
-              service: 'Microsoft.KeyVault'
-            }
-          ]
         }
       }
     ]
