@@ -1,7 +1,7 @@
 @minLength(3)
 @maxLength(8)
 @description('The environment name.')
-param environment string = 'dev'
+param environment string = 'shared'
 
 @minLength(1)
 @maxLength(20)
