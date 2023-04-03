@@ -45,41 +45,41 @@ module stg './modules/storage.bicep' = {
   }
 }
 
-// module network './network.bicep' = {
-//   name: 'network'
-//   params: {
-//     location: location
-//     vnetName: vnetName
-//     vmSubnetName: vmSubnetName
-//     kvSubnetName: kvSubnetName
-//     publicIpName: publicIpName
-//     nsgName: nsgName
-//     nicName: nicName
-//   }
-// }
+module network './modules/network.bicep' = {
+  name: 'network'
+  params: {
+    location: location
+    vnetName: vnetName
+    vmSubnetName: vmSubnetName
+    kvSubnetName: kvSubnetName
+    publicIpName: publicIpName
+    nsgName: nsgName
+    nicName: nicName
+  }
+}
 
-// module dns './dns.bicep' = {
-//   name: 'dns'
-//   dependsOn: [
-//     network
-//   ]
-//   params: {
-//     vnetName: vnetName
-//   }
-// }
+module dns './modules/dns.bicep' = {
+  name: 'dns'
+  dependsOn: [
+    network
+  ]
+  params: {
+    vnetName: vnetName
+  }
+}
 
-// module vm './vm.bicep' = {
-//   name: 'vmDeploy'
-//   dependsOn: [
-//     network
-//     stg
-//   ]
-//   params: {
-//     location: location
-//     vmName: vmName
-//     nicId: network.outputs.nicId
-//     vmStorageAccountBlobPrimaryEndpoint: stg.outputs.vmStorageAccountBlobPrimaryEndpoint
-//     adminUsername: adminUsername
-//     adminPassword: adminPassword
-//   }
-// }
+module vm './modules/vm.bicep' = {
+  name: 'vmDeploy'
+  dependsOn: [
+    network
+    stg
+  ]
+  params: {
+    location: location
+    vmName: vmName
+    nicId: network.outputs.nicId
+    vmStorageAccountBlobPrimaryEndpoint: stg.outputs.vmStorageAccountBlobPrimaryEndpoint
+    adminUsername: adminUsername
+    adminPassword: adminPassword
+  }
+}
