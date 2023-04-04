@@ -1,6 +1,7 @@
 name: Deploy Infrastructure
 
-on: [push]
+on:
+  workflow_dispatch:
 
 env:
   BASE_NAME: aca-shared-001
